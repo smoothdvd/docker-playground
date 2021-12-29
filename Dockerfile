@@ -2,7 +2,7 @@ FROM node:12-alpine:latest
 
 WORKDIR /opt/strapi
 
-COPY ./package.json ./
+# COPY ./package.json ./
 
 # Instal dependencies
 RUN sed -i 's/dl-cdn\.alpinelinux\.org/mirrors.aliyun.com/g' /etc/apk/repositories && \
@@ -15,12 +15,12 @@ RUN sed -i 's/dl-cdn\.alpinelinux\.org/mirrors.aliyun.com/g' /etc/apk/repositori
     npm config set sharp_libvips_binary_host "https://npm.taobao.org/mirrors/sharp-libvips" && \
     npm i --production --ignore-scripts=false
 
-COPY . .
+# COPY . .
 
 ENV NODE_ENV production
 
-RUN npm run build
+# RUN npm run build
 
-EXPOSE 1337
+# EXPOSE 1337
 
-CMD ["npm", "start"]
+# CMD ["npm", "start"]
