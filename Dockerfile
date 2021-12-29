@@ -1,4 +1,4 @@
-FROM node:12-alpine:latest
+FROM node:12-alpine
 
 WORKDIR /opt/strapi
 
@@ -8,7 +8,7 @@ WORKDIR /opt/strapi
 RUN sed -i 's/dl-cdn\.alpinelinux\.org/mirrors.aliyun.com/g' /etc/apk/repositories && \
     apk --no-cache add git fontconfig texlive texlive-xetex texmf-dist-langchinese && \
     mkdir /usr/share/fonts && \
-    curl https://dskb-chengshi.oss-cn-hangzhou.aliyuncs.com/FZHei-B01.ttf -o /usr/share/fonts/FZHei-B01.ttf && \
+    wget https://dskb-chengshi.oss-cn-hangzhou.aliyuncs.com/FZHei-B01.ttf -o /usr/share/fonts/FZHei-B01.ttf && \
     fc-cache -fv && \
     npm config set registry=https://registry.npm.taobao.org/ && \
     npm config set sharp_binary_host "https://npm.taobao.org/mirrors/sharp" && \
